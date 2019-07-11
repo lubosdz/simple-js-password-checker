@@ -156,8 +156,9 @@ window.simple_password_checker = {
 	checkPassStrength : function (pwd) {
 
 		var self = this, perc,
+			pwd = (pwd == undefined) ? '' : pwd.toString().replace(/^\s+|\s+$/g, ""), // trim surrounding whitespaces
 			score = self.calculatePwdScore(pwd),
-			hasMinChars = !this.min_length || pwd.toString().length >= this.min_length;
+			hasMinChars = !this.min_length || pwd.length >= this.min_length;
 
 		// % strip width
 		perc = score;
