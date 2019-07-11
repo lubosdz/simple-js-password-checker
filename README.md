@@ -1,10 +1,8 @@
-Simple javascript password strength meter with strip animation
-==============================================================
+Simple javascript password strength meter with animation
+========================================================
 
 * JS implementation based on answers:
 * https://stackoverflow.com/questions/948172/password-strength-meter
-* Created by lubosdz@gmail.com, 2019/06
-* Distributed without licence, use at your own risk & will :-)
 
 ![Screenshot](screen-password-strength-checker.gif)
 
@@ -19,8 +17,8 @@ NOTES
 * No jQuery dependency and no support for very old browsers (required native JS function "document.getElementById")
 
 
-Example implementation
-----------------------
+Example implementation - javascript:
+-----------------------------------
 
 ```js
 window.simple_password_checker.init({
@@ -38,16 +36,18 @@ window.simple_password_checker.init({
 });
 ```
 
-Adjust CSS
-----------
+Adjust CSS - e.g.
+-----------------
 
 ```css
 #meter-inner{
 	display: block;
 	min-height: 25px;
-	transition: 0.5s;
+	transition: 0.5s; /* ensure width animation */
 }
 ```
 
-*/
+License
+-------
 
+Distributed without licence, use at your own risk & will :-)
