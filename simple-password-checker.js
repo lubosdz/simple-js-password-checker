@@ -162,9 +162,9 @@ window.simple_password_checker = {
 
 		// % strip width
 		perc = score;
-		if(perc < 0){
+		if(perc < 0) {
 			perc = 0;
-		}else if(perc > 100){
+		} else if (perc > 100) {
 			perc = 100;
 		}
 
@@ -180,16 +180,16 @@ window.simple_password_checker = {
 			self.removeClass(self.el_strip, self.css_good);
 			self.removeClass(self.el_strip, self.css_strong);
 
-			if (hasMinChars && perc >= self.score_strong){
+			if (hasMinChars && perc >= self.score_strong) {
 				self.addClass(self.el_strip, self.css_strong);
 				self.el_strip.innerHTML = self.text_strong;
-			}else if (hasMinChars && score >= self.score_good){
+			} else if (hasMinChars && score >= self.score_good) {
 				self.addClass(self.el_strip, self.css_good);
 				self.el_strip.innerHTML = self.text_good;
-			}else if(pwd){
+			} else if(pwd) {
 				self.addClass(self.el_strip, self.css_weak);
 				self.el_strip.innerHTML = self.text_weak;
-			}else {
+			} else {
 				self.el_strip.innerHTML = '';
 			}
 		}
@@ -197,7 +197,7 @@ window.simple_password_checker = {
 
 	calculatePwdScore : function (pwd) {
 		var score = 0;
-		if (!pwd){
+		if (!pwd) {
 			return score;
 		}
 		// award every unique letter until 5 repetitions
