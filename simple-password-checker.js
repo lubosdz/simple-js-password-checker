@@ -66,6 +66,9 @@ window.simple_password_checker = {
 	el_entrophy : null,
 	el_strip : null,
 
+	// turn on/off alerts
+	debug : false,
+
 	init : function(options) {
 
 		// About merging props: https://stackoverflow.com/questions/171251/how-can-i-merge-properties-of-two-javascript-objects-dynamically
@@ -106,23 +109,26 @@ window.simple_password_checker = {
 		if(options.min_length != undefined){
 			this.min_length = parseInt(options.min_length);
 		}
+		if(options.debug != undefined){
+			this.debug = options.debug;
+		}
 
 		var self = this;
 
 		if(!document.getElementById){
-			alert("Your browser is too old - password checker does not support too old browsers.");
+			self.debug && alert("Your browser is too old - password checker does not support too old browsers.");
 			return;
 		}
 
 		// required input
 		if(!self.id_password){
-			alert("Please specify input field for password.");
+			self.debug && alert("Please specify input field for password.");
 			return;
 		}
 
 		self.el_password = document.getElementById(self.id_password);
 		if(!self.el_password){
-			alert("Input field for password ["+self.id_password+"] not found.");
+			self.debug && alert("Input field for password ["+self.id_password+"] not found.");
 			return;
 		}
 
@@ -130,14 +136,14 @@ window.simple_password_checker = {
 		if(self.id_entrophy){
 			self.el_entrophy = document.getElementById(self.id_entrophy);
 			if(!self.el_entrophy){
-				alert("Field for entrophy ["+self.el_entrophy+"] not found.");
+				self.debug && alert("Field for entrophy ["+self.el_entrophy+"] not found.");
 			}
 		}
 
 		if(self.id_strip){
 			self.el_strip = document.getElementById(self.id_strip);
 			if(!self.el_strip){
-				alert("Field for entrophy ["+self.id_strip+"] not found.");
+				self.debug && alert("Field for entrophy ["+self.id_strip+"] not found.");
 			}
 		}
 
