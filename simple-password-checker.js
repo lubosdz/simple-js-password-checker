@@ -1,9 +1,9 @@
 /*
 Simple javascript password strength meter with strip animation
 --------------------------------------------------------------
-* JS implementation based on answers:
+* https://github.com/lubosdz/simple-js-password-checker
+* Pure JS implementation without dependency based on answers:
 * https://stackoverflow.com/questions/948172/password-strength-meter
-* Created by lubosdz@gmail.com, 2019/06
 * Distributed without licence, use at your own risk & will :-)
 
 NOTES
