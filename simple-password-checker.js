@@ -14,12 +14,24 @@ NOTES
 * For animation set ID of DIV e.g. "id_strip" and adjust CSS - see bellow
 * No jQuery dependency and no support for very old browsers (required native JS function "document.getElementById")
 
-Example implementation
-----------------------
+Example:
+========
+
+Markup (based on bootstrap 4):
+------------------------------
+<div class="p-3 m-3">
+	Your password
+	<input type="text" id="id_password" class="form-control">
+	<div id="id_strip" class="py-2 mt-1"></div>
+	<input type="hidden" id="id_entrophy">
+</div>
+
+Options:
+--------
 window.simple_password_checker.init({
-	id_password : "formsignup-password",
-	id_entrophy : "formsignup-password_strength",
-	id_strip : "meter-inner",
+	id_password : "id_password",
+	id_entrophy : "id_entrophy",
+	id_strip : "id_strip",
 	text_weak : "<i class='fa fa-frown-o'></i> Weak password",
 	text_good : "<i class='fa fa-meh-o'></i> Good password",
 	text_strong : "<i class='fa fa-smile-o'></i> Strong password",
@@ -30,13 +42,6 @@ window.simple_password_checker.init({
 	min_length : 8
 });
 
-Adjust CSS
-----------
-#meter-inner{
-	display: block;
-	min-height: 25px;
-	transition: 0.5s;
-}
 */
 
 window.simple_password_checker = {
@@ -47,6 +52,11 @@ window.simple_password_checker = {
 	id_entrophy : '',
 	// e.g. DIV animated colored strip red - yellow - green, according to calculated score
 	id_strip : '',
+
+	// HTML to display if strip has zero length
+	html_empty_strip : '',
+	// apply fancy CSS animation on strip meter
+	css_transition : '0.5s',
 
 	text_weak : 'Weak',
 	text_good : 'Good',
@@ -81,6 +91,12 @@ window.simple_password_checker = {
 		}
 		if(options.id_strip != undefined){
 			this.id_strip = options.id_strip;
+		}
+		if(options.html_empty_strip != undefined){
+			this.html_empty_strip = options.html_empty_strip;
+		}
+		if(options.css_transition != undefined){
+			this.css_transition = options.css_transition;
 		}
 		if(options.text_weak != undefined){
 			this.text_weak = options.text_weak;
@@ -181,6 +197,9 @@ window.simple_password_checker = {
 
 		if(self.el_strip){
 			self.el_strip.style.width = perc+"%";
+			if(self.css_transition){
+				self.el_strip.style.transition = self.css_transition;
+			}
 
 			self.removeClass(self.el_strip, self.css_weak);
 			self.removeClass(self.el_strip, self.css_good);
@@ -196,7 +215,8 @@ window.simple_password_checker = {
 				self.addClass(self.el_strip, self.css_weak);
 				self.el_strip.innerHTML = self.text_weak;
 			} else {
-				self.el_strip.innerHTML = '';
+				self.el_strip.innerHTML = self.html_empty_strip;
+				self.el_strip.style.width = '';
 			}
 		}
 	},
