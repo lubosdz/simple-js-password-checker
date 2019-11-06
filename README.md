@@ -17,14 +17,23 @@ NOTES
 * No jQuery dependency and no support for very old browsers (required native JS function "document.getElementById")
 
 
-Example implementation - javascript:
------------------------------------
+Example (BS4):
+--------------
+
+```html
+<div class="p-3 m-3">
+	Your password
+	<input type="text" id="id_password" class="form-control">
+	<div id="id_strip" class="py-2 mt-1"></div>
+	<input type="hidden" id="id_entrophy">
+</div>
+```
 
 ```js
 window.simple_password_checker.init({
-	id_password : "formsignup-password",
-	id_entrophy : "formsignup-password_strength",
-	id_strip : "meter-inner",
+	id_password : "id_password",
+	id_entrophy : "id_entrophy",
+	id_strip : "id_strip",
 	text_weak : "<i class='fa fa-frown-o'></i> Weak password",
 	text_good : "<i class='fa fa-meh-o'></i> Good password",
 	text_strong : "<i class='fa fa-smile-o'></i> Strong password",
@@ -34,17 +43,6 @@ window.simple_password_checker.init({
 	score_good : 50,
 	min_length : 8
 });
-```
-
-Adjust CSS - e.g.
------------------
-
-```css
-#meter-inner{
-	display: block;
-	min-height: 25px;
-	transition: 0.5s; /* ensure width animation */
-}
 ```
 
 License
